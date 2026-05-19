@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/username/repository/main/assets/icon/app_icon.png" alt="VoxCalc Logo" width="120" height="120" style="border-radius: 24px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.35);"/>
+  <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/assets/icon/app_icon.png" alt="VoxCalc Logo" width="120" height="120" style="border-radius: 24px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.35);"/>
 </p>
 
 <h1 align="center">VOXCALC - Next-Gen Math Suite</h1>
@@ -33,8 +33,8 @@ VoxCalc is an **elite, production-grade, highly interactive AI-inspired mobile a
 
 | Platform | Type | Status | Action Link |
 |:---|:---|:---|:---|
-| **Android Device** | **Release APK Package** | `v1.0.0-Stable` | [📥 Download Stable APK](https://github.com/YOUR_GITHUB_USERNAME/VoxCalc/releases/download/v1.0.0/app-release.apk) |
-| **Web Browser** | **Live Interactive App** | `Online` | [🌐 Launch Live Web Demo](https://YOUR_GITHUB_USERNAME.github.io/VoxCalc) |
+| **Android Device** | **Release APK Package** | `v1.0.0-Stable` | [📥 Download Stable APK](https://github.com/md-rounaq-ali/VoxCalc/releases/download/v1.0.0/app-release.apk) |
+| **Web Browser** | **Live Interactive App** | `Online` | [🌐 Launch Live Web Demo](https://md-rounaq-ali.github.io/VoxCalc) |
 
 ---
 
@@ -42,13 +42,13 @@ VoxCalc is an **elite, production-grade, highly interactive AI-inspired mobile a
 
 <p align="center">
   <kbd>
-    <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/VoxCalc/main/screenshots/keypad_dark.png" width="220" alt="Futuristic Neon Keypad"/>
+    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/keypad_dark.png" width="220" alt="Futuristic Neon Keypad"/>
   </kbd>
   <kbd>
-    <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/VoxCalc/main/screenshots/settings_dark.png" width="220" alt="Frosted Settings Panel"/>
+    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/settings_dark.png" width="220" alt="Frosted Settings Panel"/>
   </kbd>
   <kbd>
-    <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/VoxCalc/main/screenshots/grapher_dark.png" width="220" alt="Coordinate Graph Plotter"/>
+    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/grapher_dark.png" width="220" alt="Coordinate Graph Plotter"/>
   </kbd>
 </p>
 
@@ -134,7 +134,7 @@ lib/
 ### 2. Running Locally
 ```bash
 # 1. Clone this repository
-git clone https://github.com/YOUR_GITHUB_USERNAME/VoxCalc.git
+git clone https://github.com/md-rounaq-ali/VoxCalc.git
 
 # 2. Navigate to the project root folder
 cd VoxCalc
