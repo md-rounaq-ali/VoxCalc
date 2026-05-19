@@ -42,13 +42,13 @@ VoxCalc is an **elite, production-grade, highly interactive AI-inspired mobile a
 
 <p align="center">
   <kbd>
-    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/keypad_dark.png" width="220" alt="Futuristic Neon Keypad"/>
+    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/keypad_dark.jpg" width="220" alt="Futuristic Neon Keypad"/>
   </kbd>
   <kbd>
-    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/settings_dark.png" width="220" alt="Frosted Settings Panel"/>
+    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/voice_dark.jpg" width="220" alt="Tactile Pulse Voice AI"/>
   </kbd>
   <kbd>
-    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/grapher_dark.png" width="220" alt="Coordinate Graph Plotter"/>
+    <img src="https://raw.githubusercontent.com/md-rounaq-ali/VoxCalc/main/screenshots/drawer_dark.jpg" width="220" alt="Sleek Modern Navigation Menu"/>
   </kbd>
 </p>
 
