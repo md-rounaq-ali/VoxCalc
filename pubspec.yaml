@@ -1,0 +1,64 @@
+name: voxcalc
+description: "The Ultimate AI-Inspired Smart Calculator & Math Suite"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management & Dependency Injection
+  provider: ^6.1.1
+  get_it: ^7.6.0
+
+  # Local Databases & Persistent Files (100% Free & Open Source)
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.2
+
+  # Document Generation & Sharing (100% Free & Open Source)
+  pdf: ^3.10.8
+  share_plus: ^7.2.1
+
+  # Core Logic & Networking (100% Free & Open Source)
+  math_expressions: ^2.5.0
+  uuid: ^4.3.3
+  intl: ^0.19.0
+  http: ^1.2.0
+
+  # Native Hardware Services (100% Free System APIs)
+  speech_to_text: ^7.3.0
+  flutter_tts: ^3.8.5
+
+  # Camera & Free On-Device OCR Scanner (100% Free Google ML Kit)
+  camera: ^0.10.5+5
+  google_mlkit_text_recognition: ^0.11.0
+
+  # Visual Aesthetics & Typography (100% Free & Open Source)
+  google_fonts: ^6.2.0
+  flutter_animate: ^4.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.8
+  hive_generator: ^2.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "#121318"
+  adaptive_icon_foreground: "assets/icon/app_icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/audio/
+    - assets/icon/
