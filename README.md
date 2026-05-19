@@ -98,32 +98,48 @@ VoxCalc is an **elite, production-grade, highly interactive AI-inspired mobile a
 VoxCalc adheres to robust **Clean Architecture** patterns combined with **Provider state management**, ensuring the code is fully decoupled, extensible, and completely stable across mobile, web, and desktop.
 
 ```
-lib/
-├── main.dart                             # Bootstrapper, Dependency injection, Device lock setups
-├── core/
-│   ├── theme/
-│   │   ├── app_theme.dart                # Theme engine tokens (Dark Fusion, Cyberpunk, Light Aurora)
-│   │   └── text_styles.dart              # Modern Typography definitions using premium Google Fonts
-│   ├── services/
-│   │   ├── storage_service.dart          # Hive local database cache persistence
-│   │   ├── tts_service.dart              # On-device voice reading synthesizer
-│   │   ├── export_service.dart           # Local styled PDF & CSV table export pipeline
-│   │   └── service_locator.dart          # Dependency injection container (GetIt Singletons)
-│   └── utils/
-│       ├── math_parser.dart              # Robust mathematical PEMDAS equation parser
-│       └── haptic_helper.dart            # Haptic vibration & tactile sound controller
-└── features/
-    ├── splash/                           # Futuristic logo scanning splash screen
-    ├── onboarding/                       # Gesture onboarding slides with auto-scaling layouts
-    ├── calculator/                       # Scientific keypad, Handwriting canvas, Voice sheets
-    ├── grapher/                          # Coordinate graph plotter and curve drawers
-    ├── solver/                           # Step-by-step quadratic/linear/matrix solvers
-    ├── lens/                             # Real-time camera viewfinder & ML Kit text recognition
-    ├── formulas/                         # Expanded formula registry and templates
-    └── stats/                            # Variable memory trackers & performance dashboard
+VoxCalc/
+├── android/                              # Native Android Platform Build Scripts & Rules
+│   ├── app/                              # Android Application Module
+│   │   ├── build.gradle.kts              # Application Build Configuration (compileSdk = 36, R8 active)
+│   │   └── proguard-rules.pro            # Custom R8/Proguard rules for Google ML Kit modules
+│   └── build.gradle.kts                  # Root Gradle Configuration (overrides library dependency compileSdk to 36)
+├── assets/                               # Static Application Resources & Audio Cache
+│   ├── audio/                            # Tactical Audio Feedback (click, erase, success SFX)
+│   └── icon/                             # High-Resolution Application Branding Logo
+├── ios/                                  # Native iOS Platform App Files
+├── web/                                  # Flutter Web Support (HTML/JS canvas targets)
+├── windows/                              # Flutter Native Windows Desktop Target Configuration
+├── lib/                                  # Main Application Source Code
+│   ├── main.dart                         # Main Application Entry Point, Service Initializer & Device Config
+│   ├── core/                             # Shared Foundation Classes & Services
+│   │   ├── services/                     # Application-Wide Platform Integrations
+│   │   │   ├── storage_service.dart      # Hive Local Database Persistence Engine
+│   │   │   ├── tts_service.dart          # Text-To-Speech Audio Voice Synthesis
+│   │   │   ├── export_service.dart       # High-Tech PDF Document & CSV File Exporter
+│   │   │   └── service_locator.dart      # Dependency Injection Container (GetIt Registry)
+│   │   ├── theme/                        # Sleek Dark Slate, Neon Cyberpunk, & Aurora Engine Token Rules
+│   │   │   ├── app_theme.dart            # Multi-Theme Application System Configurations
+│   │   │   └── text_styles.dart          # Typographic styling rules using premium Google Fonts
+│   │   └── utils/                        # System Constants & Helper Pipelines
+│   │       ├── math_parser.dart          # Safe PEMDAS Math Compiler & Custom Equation Solver
+│   │       └── haptic_helper.dart        # Native Tactile Vibration Controller
+│   └── features/                         # Decoupled Feature Modules (Feature-First Architecture)
+│       ├── splash/                       # High-Impact Branded Entry Loading Screen
+│       ├── onboarding/                   # Interactive User Onboarding Slider Suite
+│       ├── calculator/                   # Core Workspace (Keypad UI & AI Voice Recognition Interfaces)
+│       │   ├── domain/                   # Domain Layer (Calculator business rules)
+│       │   ├── data/                     # Data Layer (History, database operations)
+│       │   └── presentation/             # UI Components (keypads, settings, history widgets)
+│       ├── grapher/                      # Real-time algebraic coordinate grid graph canvas
+│       ├── solver/                       # Step-by-step math solver (Matrix, simultaneous equations)
+│       ├── lens/                         # Camera viewfinder overlay & Google ML Kit OCR scanner
+│       ├── formulas/                     # Interactive Mathematical reference book and inject engine
+│       ├── stats/                        # Study Analytics charts, streaks, and editable memory variables
+│       └── converter/                    # Global currency rate converter & dimension transformer
+└── pubspec.yaml                          # Package Configuration, Assets Registry, & Dependecies Catalog
 ```
-
----
+----
 
 ## 🛠️ Developer Setup & Launch Guide
 
