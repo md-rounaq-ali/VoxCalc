@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -105,12 +108,22 @@ class ExportService {
 
     // Save and Share the compiled PDF
     try {
-      final tempDir = await getTemporaryDirectory();
-      final file = File('${tempDir.path}/VoxCalc_Export_${DateTime.now().millisecondsSinceEpoch}.pdf');
-      await file.writeAsBytes(await pdf.save());
+      if (kIsWeb) {
+        final bytes = await pdf.save();
+        final xFile = XFile.fromData(
+          bytes,
+          mimeType: 'application/pdf',
+          name: 'VoxCalc_Export_${DateTime.now().millisecondsSinceEpoch}.pdf',
+        );
+        await Share.shareXFiles([xFile], text: 'Exported VoxCalc Math History Report');
+      } else {
+        final tempDir = await getTemporaryDirectory();
+        final file = File('${tempDir.path}/VoxCalc_Export_${DateTime.now().millisecondsSinceEpoch}.pdf');
+        await file.writeAsBytes(await pdf.save());
 
-      // Open the platform native sharing panel
-      await Share.shareXFiles([XFile(file.path)], text: 'Exported VoxCalc Math History Report');
+        // Open the platform native sharing panel
+        await Share.shareXFiles([XFile(file.path)], text: 'Exported VoxCalc Math History Report');
+      }
     } catch (_) {}
   }
 
@@ -134,12 +147,22 @@ class ExportService {
     }
 
     try {
-      final tempDir = await getTemporaryDirectory();
-      final file = File('${tempDir.path}/VoxCalc_Export_${DateTime.now().millisecondsSinceEpoch}.csv');
-      await file.writeAsString(buffer.toString());
+      if (kIsWeb) {
+        final bytes = Uint8List.fromList(utf8.encode(buffer.toString()));
+        final xFile = XFile.fromData(
+          bytes,
+          mimeType: 'text/csv',
+          name: 'VoxCalc_Export_${DateTime.now().millisecondsSinceEpoch}.csv',
+        );
+        await Share.shareXFiles([xFile], text: 'Exported VoxCalc Math History Spreadsheet');
+      } else {
+        final tempDir = await getTemporaryDirectory();
+        final file = File('${tempDir.path}/VoxCalc_Export_${DateTime.now().millisecondsSinceEpoch}.csv');
+        await file.writeAsString(buffer.toString());
 
-      // Open the platform native sharing panel
-      await Share.shareXFiles([XFile(file.path)], text: 'Exported VoxCalc Math History Spreadsheet');
+        // Open the platform native sharing panel
+        await Share.shareXFiles([XFile(file.path)], text: 'Exported VoxCalc Math History Spreadsheet');
+      }
     } catch (_) {}
   }
 

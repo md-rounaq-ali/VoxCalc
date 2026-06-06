@@ -1,30 +1,33 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:voxcalc/main.dart';
+import 'package:voxcalc/core/utils/math_parser.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('MathParser Tests', () {
+    test('Basic Arithmetic Evaluation', () {
+      expect(MathParser.evaluate('2 + 3 * 4'), '14');
+      expect(MathParser.evaluate('(2 + 3) * 4'), '20');
+      expect(MathParser.evaluate('10 - 5 - 2'), '3');
+      expect(MathParser.evaluate('12 / 4'), '3');
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('Division by Zero Handling', () {
+      expect(MathParser.evaluate('5 / 0'), 'Error: Division by zero');
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    test('Trigonometry and Math Functions', () {
+      expect(MathParser.evaluate('sin(0)'), '0');
+      expect(MathParser.evaluate('cos(0)'), '1');
+    });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('Implicit Multiplication', () {
+      expect(MathParser.evaluate('2(3)'), '6');
+      expect(MathParser.evaluate('(2)(3)'), '6');
+      expect(MathParser.evaluate('2pi'), '6.28318531');
+    });
+
+    test('Invalid Syntax Handling', () {
+      expect(MathParser.evaluate('2 + * 3'), 'Error: Invalid Syntax');
+      expect(MathParser.evaluate('sin('), 'Error: Invalid Syntax');
+    });
   });
 }

@@ -12,10 +12,7 @@ void main() async {
   // 1. Guarantee native widget platform bindings are fully established
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 2. Disable Google Fonts HTTP fetching to prevent offline SocketException lags
-  GoogleFonts.config.allowRuntimeFetching = false;
-
-  // 3. Enable screen orientations support (Portrait & Landscape)
+  // 2. Enable screen orientations support (Portrait & Landscape)
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -23,10 +20,10 @@ void main() async {
     DeviceOrientation.landscapeRight,
   ]);
 
-  // 4. Initialize GetIt Dependency Injections (Hive local persistency, TTS synthesis, Export services)
+  // 3. Initialize GetIt Dependency Injections (Hive local persistency, TTS synthesis, Export services)
   await setupServiceLocator();
 
-  // 5. Run standard application thread
+  // 4. Run standard application thread
   runApp(const VoxCalcApp());
 }
 

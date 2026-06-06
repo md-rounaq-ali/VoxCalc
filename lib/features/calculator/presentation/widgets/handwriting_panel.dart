@@ -301,7 +301,6 @@ class _HandwritingPanelState extends State<HandwritingPanel> {
                       },
                       onPanUpdate: (details) {
                         if (_strokes.isEmpty) return;
-                        HapticHelper.triggerSelectionClick();
                         setState(() {
                           _strokes.last.add(details.localPosition);
                         });

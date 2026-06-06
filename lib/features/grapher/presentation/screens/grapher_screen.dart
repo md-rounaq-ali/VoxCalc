@@ -221,6 +221,27 @@ class _GraphPainter extends CustomPainter {
     // 4. Plot curves math function points
     if (expression.trim().isEmpty) return;
 
+    Expression? parsedExp;
+    final ContextModel cm = ContextModel();
+    final Variable xVar = Variable('x');
+    cm.bindVariable(xVar, Number(0.0));
+    cm.bindVariable(Variable('pi'), Number(math.pi));
+    cm.bindVariable(Variable('e'), Number(math.e));
+
+    try {
+      final String sanitized = expression
+          .toLowerCase()
+          .replaceAll(' ', '')
+          .replaceAll('×', '*')
+          .replaceAll('÷', '/')
+          .replaceAll('mod', '%')
+          .replaceAll('π', 'pi');
+      Parser p = Parser();
+      parsedExp = p.parse(sanitized);
+    } catch (_) {
+      return; // If expression is malformed, don't render curve
+    }
+
     final Paint curvePaint = Paint()
       ..color = accentColor
       ..strokeWidth = 3.0
@@ -242,7 +263,8 @@ class _GraphPainter extends CustomPainter {
       final double xVal = (screenX - midX) / zoomScale;
 
       try {
-        final double yVal = _evaluateFunction(expression, xVal);
+        cm.bindVariable(xVar, Number(xVal));
+        final double yVal = parsedExp.evaluate(EvaluationType.REAL, cm);
         
         // Convert math coordinate Y to screen pixel position
         final double screenY = midY - (yVal * zoomScale);
@@ -262,33 +284,6 @@ class _GraphPainter extends CustomPainter {
     if (!firstPoint) {
       canvas.drawPath(curvePath, glowPaint);
       canvas.drawPath(curvePath, curvePaint);
-    }
-  }
-
-  /// Extremely fast dynamic interpreter for common graphing curves offline.
-  /// Deciphers mathematical functions containing variable x.
-  double _evaluateFunction(String func, double xVal) {
-    final String sanitized = func
-        .toLowerCase()
-        .replaceAll(' ', '')
-        .replaceAll('×', '*')
-        .replaceAll('÷', '/')
-        .replaceAll('mod', '%')
-        .replaceAll('π', 'pi');
-
-    try {
-      Parser p = Parser();
-      Expression exp = p.parse(sanitized);
-      ContextModel cm = ContextModel();
-      
-      cm.bindVariable(Variable('x'), Number(xVal));
-      cm.bindVariable(Variable('pi'), Number(math.pi));
-      cm.bindVariable(Variable('e'), Number(math.e));
-
-      double eval = exp.evaluate(EvaluationType.REAL, cm);
-      return eval;
-    } catch (_) {
-      return double.nan;
     }
   }
 

@@ -194,7 +194,7 @@ class SettingsPanel extends StatelessWidget {
 
     if (isSelected) {
       cardBg = accent;
-      textColor = isLight ? Colors.white : Colors.black;
+      textColor = themeName == "light_aurora" ? const Color(0xFF1E293B) : Colors.black;
     } else {
       cardBg = isLight ? Colors.black.withOpacity(0.04) : Colors.white.withOpacity(0.06);
       textColor = AppTheme.getTextColor(mode).withOpacity(0.6);

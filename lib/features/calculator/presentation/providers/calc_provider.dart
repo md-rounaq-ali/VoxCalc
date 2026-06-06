@@ -206,7 +206,10 @@ class CalcProvider extends ChangeNotifier {
     // Map user variables back to numerical constants before calculation
     String evaluationExpression = _expression;
     _variables.forEach((key, val) {
-      evaluationExpression = evaluationExpression.replaceAll(key, '($val)');
+      evaluationExpression = evaluationExpression.replaceAllMapped(
+        RegExp('(?<![a-zA-Z])$key(?![a-zA-Z])'),
+        (match) => '($val)',
+      );
     });
 
     final String calcResult = MathParser.evaluate(evaluationExpression);
